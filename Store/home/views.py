@@ -9,3 +9,6 @@ def about(request):
 
 def services(request):
     return HttpResponse("this is services")
+
+def contacts(request):
+    return HttpResponse("this is contacts")
