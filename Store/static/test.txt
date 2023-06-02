@@ -1,1 +1,1 @@
-This is a test file and a static file
+This is a test and a static file
