@@ -1,12 +1,7 @@
 from django.shortcuts import render, HttpResponse
-
+from django.contrib.auth.models import users
 # Create your views here.
-def index(request):
-    context = {
-        'variable': "this is sent"
-    }
-    return render(request,'index.html',context)
-    # return HttpResponse("this is homepage")
+
 
 def about(request):
     return HttpResponse("this is about")
@@ -17,7 +12,26 @@ def services(request):
 def contacts(request):
     return HttpResponse("this is contacts")
 
+def index(request):
+    if request.user.anonymous:
+        return redirect("/login")
+    # context = {
+    #     'variable': "this is sent"
+    # }
+    # return render(request,'index.html',context)
+    # # return HttpResponse("this is homepage")
+
 def login(request):
-    return render(request,'login.html')
+    if request.method == "POST":
+        #check credit
+        username = request.POST.get('username')
+        password = request.POST.get(password)
+        user = authenticate(username = username , password = password)
+        if user is not None:
+            return redirect("/")
+        else:
+            return render(request,'login.html') 
+    return render(request,'login.html') 
 def logout(request):
-    return render(request,'logout.html')
+    logout(request)
+    return redirect("/login")
