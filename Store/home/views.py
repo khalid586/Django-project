@@ -26,11 +26,11 @@ def index(request):
 def loginUser(request):
     if request.method == "POST":
         #check credit
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        print(username,password)
+        username = request.POST.get('userName')
+        password = request.POST.get('passWord')
+        print(username,password,"TWO")
         
-        user = authenticate(username = username , password = password)
+        user = authenticate(username = userName , password = passWord)
         if user is not None:
             login(request,user)
             return redirect("/")
