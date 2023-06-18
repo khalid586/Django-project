@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse
 from django.contrib.auth.models import users
+from django.contrib.auth import logout,authenticate
 # Create your views here.
 
 
