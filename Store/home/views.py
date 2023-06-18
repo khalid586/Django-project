@@ -16,3 +16,8 @@ def services(request):
 
 def contacts(request):
     return HttpResponse("this is contacts")
+
+def login(request):
+    return render(request,'login.html')
+def logout(request):
+    return render(request,'logout.html')

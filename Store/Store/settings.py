@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-nnf-wlgr3!p4(t7!^202+#h6v7e*px6%c&#1pkoih9cb)2xn1p
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -55,7 +55,7 @@ ROOT_URLCONF = 'Store.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR , "templates")], # BASE_DIR / "templates"
+        'DIRS': [os.path.join(BASE_DIR , "template")], # BASE_DIR / "templates"
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
