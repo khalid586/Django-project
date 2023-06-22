@@ -14,17 +14,42 @@ def contacts(request):
     return HttpResponse("this is contacts")
 
 def index(request):
-    param = {'name':"khalid", 'job':"engineer"}
-    return render(request,'index.html',param)
+    return render(request,'index.html')
 
-def test(request):
-    param2 = {'height':"5.10" , 'weight':"105 kg"}
-    return render(request,'test.html',param2)
+def analyze(request):
+    Text = request.GET.get('text','default')
+    rmvPunc = request.GET.get('removePunc','off')
+    capital = request.GET.get('upperCase','off')
+    charCnt = request.GET.get('CharCount','off')
+    punctuations = '''!()-[]{};:'"\,<>./?@#$%^&*_~'''
+    final = ''''''
     
+    if rmvPunc == 'on':
+        for ch in Text:
+            if ch not in punctuations:
+                final = final + ch
+        params = {'purpose':'Remove Punctuation','analyzed_text':final}
+        return render(request,'analyze.html',params)
+    elif capital == 'on':
+        for ch in Text:
+            if ch not in punctuations:
+                final = final + ch.upper()
+        params = {'purpose':'Capitalization','analyzed_text':final}
+        return render(request,'analyze.html',params)
+    
+    elif charCnt == 'on':
+        cnt = 0
+        for ch in Text:
+            if ch not in punctuations:
+                if ch != ' ':
+                    cnt += 1
+        params = {'purpose':'Character count','analyzed_text':cnt}
+        return render(request,'analyze.html',params)
+        
+    else:
+        return render(request,'analyze.html',Text)
 
-def removePunc(request):
-    s = request.GET.get('text','default')
-    return HttpResponse("The text you've entered is : " + s)
+
     # context = {
     #     'variable': "this is sent"
     # }

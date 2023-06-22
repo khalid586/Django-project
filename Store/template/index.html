@@ -12,16 +12,24 @@
 
 <body>
     <h1>Enter your text below</h1>
-    <form action="/removePunc" method="get">
+    <form action="/analyze" method="get">
         <textarea name="text" id="nothing" cols="90" rows="10"></textarea>
         <br><br>
         <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-            <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
+            <input name="removePunc" class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+            <label class="form-check-label" for="flexSwitchCheckDefault"> Remove Punctuation</label>
         </div>
+        <div class="form-check form-switch">
+            <input name="upperCase" class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+            <label class="form-check-label" for="flexSwitchCheckDefault"> Capitalize</label>
+        </div>
+        <div class="form-check form-switch">
+            <input name="CharCount" class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+            <label class="form-check-label" for="flexSwitchCheckDefault">Count the number of Character</label>
+        </div>
+
         <button type="submit" class="btn btn-outline-danger">Analyze Text</button>
 
     </form>
 
-    <h1> Name is {{name}} and job is {{job}}</h1>
 </body>
