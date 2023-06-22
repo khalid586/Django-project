@@ -12,6 +12,12 @@ from django.contrib.auth import logout,authenticate
 
 # def contacts(request):
 #     return HttpResponse("this is contacts")
+def ex1(request):
+    s = ''' <a href = "https://www.facebook.com/">Facebook</a> <br> 
+            <a href = "https://www.google.com/">Google</a> <br>
+            <a href = "https://www.amazon.com/">amazon</a>
+    '''
+    return HttpResponse(s)
 
 def index(request):
     return render(request,'index.html')
