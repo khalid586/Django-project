@@ -4,14 +4,14 @@ from django.contrib.auth import logout,authenticate
 # Create your views here.
 
 
-def about(request):
-    return HttpResponse("this is about")
+# def about(request):
+#     return HttpResponse("this is about")
 
-def services(request):
-    return HttpResponse("this is services")
+# def services(request):
+#     return HttpResponse("this is services")
 
-def contacts(request):
-    return HttpResponse("this is contacts")
+# def contacts(request):
+#     return HttpResponse("this is contacts")
 
 def index(request):
     return render(request,'index.html')
