@@ -14,7 +14,13 @@ def contacts(request):
     return HttpResponse("this is contacts")
 
 def index(request):
-    return render(request,'index.html')
+    param = {'name':"khalid", 'job':"engineer"}
+    return render(request,'index.html',param)
+
+def test(request):
+    param2 = {'height':"5.10" , 'weight':"105 kg"}
+    return render(request,'test.html',param2)
+    
 
 def removePunc(request):
     s = request.GET.get('text','default')
