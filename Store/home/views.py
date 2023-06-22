@@ -54,7 +54,7 @@ def analyze(request):
         return render(request,'analyze.html',params)
         
     else:
-        return render(request,'analyze.html',Text)
+        return HttpResponse("<h1>The text is : </h1> "+ Text)
 
 
     # context = {
