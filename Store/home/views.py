@@ -13,10 +13,11 @@ from django.contrib.auth import logout,authenticate
 # def contacts(request):
 #     return HttpResponse("this is contacts")
 def ex1(request):
-    s = ''' <a href = "https://www.facebook.com/">Facebook</a> <br> 
-            <a href = "https://www.google.com/">Google</a> <br>
-            <a href = "https://www.amazon.com/">amazon</a>
-    '''
+    s = ['''<h1>For Entertainment </h1><a href = "https://www.youtube.com" >youtube video</a>''',
+             '''<h1>For Interaction </h1><a href = "https://www.facebook.com" >Facebook</a>''',
+             '''<h1>For Insight   </h1><a href = "https://www.ted.com/talks" >Ted Talk</a>''',
+             '''<h1>For Internship   </h1><a href="https://internshala.com" >Intenship</a>''',
+        ]
     return HttpResponse(s)
 
 def index(request):
