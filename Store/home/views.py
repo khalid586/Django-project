@@ -30,31 +30,50 @@ def analyze(request):
     charCnt = request.GET.get('CharCount','off')
     punctuations = '''!()-[]{};:'"\,<>./?@#$%^&*_~'''
     final = ''''''
+    params = {'purpose':'' , 'analyzed_text':''}
     
     if rmvPunc == 'on':
         for ch in Text:
             if ch not in punctuations:
                 final = final + ch
-        params = {'purpose':'Remove Punctuation','analyzed_text':final}
-        return render(request,'analyze.html',params)
-    elif capital == 'on':
-        for ch in Text:
-            if ch not in punctuations:
-                final = final + ch.upper()
-        params = {'purpose':'Capitalization','analyzed_text':final}
-        return render(request,'analyze.html',params)
-    
-    elif charCnt == 'on':
-        cnt = 0
-        for ch in Text:
-            if ch not in punctuations:
-                if ch != ' ':
-                    cnt += 1
-        params = {'purpose':'Character count','analyzed_text':cnt}
-        return render(request,'analyze.html',params)
-        
+        params['purpose'] = 'remove punctuation'
+        params['analyzed_text'] = final
+       # return render(request,'analyze.html',params)
+       
     else:
+        final = Text
+    
+    if capital == 'on':
+        for ch in Text:
+                final = final.upper()
+        if rmvPunc == 'on':
+            params['purpose'] += ' and capitalization'
+        else:
+            params['purpose'] += 'capitalization'
+            
+        
+        params['analyzed_text'] = final
+        #return render(request,'analyze.html',params)
+      
+    elif final == '':
+        final = Text
+    
+    if charCnt == 'on':
+        cnt = 0
+        for ch in final:
+            if ch != ' ':
+                cnt += 1
+        
+        if rmvPunc == 'on' or capital == 'on':
+            params['purpose'] += ' and character count'
+        else:
+            params['purpose'] += 'character count'
+            
+        params['analyzed_text'] = final + ' Character count is = ' + str(cnt)
+    if(capital != 'on' and rmvPunc != 'on' and charCnt != 'on'):
         return HttpResponse("<h1>The text is : </h1> "+ Text)
+    
+    return render(request,'analyze.html',params)
 
 
     # context = {
