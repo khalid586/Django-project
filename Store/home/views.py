@@ -71,7 +71,7 @@ def analyze(request):
             
         params['analyzed_text'] = final + ' Character count is = ' + str(cnt)
     if(capital != 'on' and rmvPunc != 'on' and charCnt != 'on'):
-        return HttpResponse("<h1>The text is : </h1> "+ Text)
+        return HttpResponse("<h1> <b> Error!!!  You have not given any instruction</b> </h1>")
     
     return render(request,'analyze.html',params)
 
